@@ -2,30 +2,35 @@
 
 import { Image, Text, TouchableOpacity, View } from "react-native";
 import { CustomStyles } from "./CustomStyles";
-import React from "react";
+import React, { useState } from "react";
 
-export const TodoListitem = ({ textValue, id, checked, onRemove, onToggle }) => {
+export const TodoListitem = ({ textValue, id, categoryObj, checked, onRemove, onToggle }) => {
+    
+    
+
     return (
         <View style={CustomStyles.container2}>
-
+ 
             <TouchableOpacity onPressOut={onToggle(id)} >
-                {checked ? (
-                    <View style={CustomStyles.completeCircle}>
-                        {/* <Icon name="circledowno" size={30} color="#3143e8"/> */}
-                        <Image source={require('./verified.png')} style={CustomStyles.imageAdjustment} />
-                    </View>
+                {
+                    checked ? (
+                        <View style={CustomStyles.completeCircle}>
+                            {/* <Icon name="circledowno" size={30} color="#3143e8"/> */}
+                            <Image source={require('./verified.png')} style={CustomStyles.imageAdjustment} />
+                        </View>
 
-                ) : (
-                    <View style={CustomStyles.circle} />
-                )}
+                    ) : (
+                        <View style={CustomStyles.circle} />
+                    )
+                }
             </TouchableOpacity>
 
             <Text style={[CustomStyles.text, checked ? CustomStyles.strikeText : CustomStyles.unstrikeText]}>{textValue}</Text>
+            <Text>{ categoryObj.key}</Text>
+            <TouchableOpacity style={CustomStyles.buttonContainer} onPress={onRemove(id)}>
 
-            <TouchableOpacity style={CustomStyles.buttonContainer}  onPress={onRemove(id)}>
-                 
-                    <Image source={require('./remove.png')} style={CustomStyles.cancelButtonContainer} />
-                
+                <Image source={require('./remove.png')} style={CustomStyles.cancelButtonContainer} />
+
             </TouchableOpacity>
 
         </View>

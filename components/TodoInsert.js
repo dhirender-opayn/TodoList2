@@ -4,30 +4,24 @@ import { Button, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { CustomStyles } from "./CustomStyles";
 import React, { useState } from "react";
 import { CategoryList } from "./CategoryList";
-
-
-
-export const TodoInsert = ({ onAddTodo, onCategory,onToggle }) => {
-
-     
+ 
+export const TodoInsert = ({ onAddTodo, onParentSelectCategory }) => {
     const [newTodoItem, setNewTodoItem] = useState('');
-    const [newFullList, setNewFullList] = useState([]);
-
-    const todoInputHandler = newTodo => {
+    const todoInputHandler = newTodo => 
+    {
         setNewTodoItem(newTodo);
     };
-
-    const addButtonTodo = () => {
-        if(newTodoItem.length>0){
+    const addButtonTodo = () =>
+    {
+        if(newTodoItem.length>0)
+        {
             onAddTodo(newTodoItem);
             setNewTodoItem('');
-        }else {
+        }else
+        {
             alert("enter msg")
         }
     }
- 
-
- 
     return (
         <View style={{flexDirection:'column'}}>
             <View style={CustomStyles.inputContainer} >
@@ -41,16 +35,11 @@ export const TodoInsert = ({ onAddTodo, onCategory,onToggle }) => {
                     onChangeText={todoInputHandler}
                     placeholderTextColor={'#999'}
                 />
-                
-            
                 <TouchableOpacity  style={CustomStyles.appButtonContainer}  onPress={addButtonTodo}>
                     <Text style={CustomStyles.appButtonText}> Add</Text>
                 </TouchableOpacity>
-            
-            
             </View>
-
-            <CategoryList onCategory={onCategory} onToggle = {onToggle}/>
+            <CategoryList onParentSelectCategory = {onParentSelectCategory}  />
         </View>
     );
 }
