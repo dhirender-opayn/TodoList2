@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { SafeAreaView, ScrollView, StyleSheet, Text, TextInput, TextInputBase, View } from 'react-native';
-import { CategoryList } from './components/CategoryList';
+import { SafeAreaView,  Text,   View } from 'react-native';
 import { CustomStyles } from './components/CustomStyles';
 import { TodoInsert } from './components/TodoInsert';
 import { TodoList } from './components/TodoList';
@@ -9,6 +8,9 @@ import { TodoList } from './components/TodoList';
 const App = () => {
 
   const [todos, setTodos] = useState([]);
+
+ 
+
   const [selectedCategory, setSelectedCatgory] = useState('');
 
   const addTodo = (text) => {
@@ -18,10 +20,15 @@ const App = () => {
     ]);
   };
 
+
+ 
+
   const onRemove = id => e => {
 
     setTodos(todos.filter(todo => todo.id != id));
   };
+
+
 
   const onToggle = id => e => {
     setTodos(
@@ -31,21 +38,26 @@ const App = () => {
     )
   };
 
+
   const onChildrenSelectCategory = categoryObject => {
     setSelectedCatgory(categoryObject)
   };
 
   const getFilteredList = () => {
+
     let filteredList = []
+
     todos.map(todo => {
-      if (todo.categoryObj.id == selectedCategory.id || selectedCategory.key == 'All') {
+      if (todo.categoryObj.id == selectedCategory.id || selectedCategory.categoryName == 'All') {
         filteredList.push(todo)
       }
     })
+
     return filteredList
   }
 
   return (
+
     <SafeAreaView style={CustomStyles.container}>
       <Text style={CustomStyles.appTitle}>Todo List</Text>
       <View style={CustomStyles.card}>
@@ -55,5 +67,7 @@ const App = () => {
     </SafeAreaView>
   );
 };
+
+
 
 export default App;

@@ -7,10 +7,10 @@ export const CategoryList = ({ onParentSelectCategory }) => {
 
     const [selectedCategory, setSelectedCatgory] = useState(null);
     const listdata = [
-        { key: 'All', id: 1, checked: false },
-        { key: 'Urgent', id: 2, checked: false },
-        { key: 'working', id: 3, checked: false },
-        { key: 'home', id: 4, checked: false }
+        { categoryName: 'All', id: 1, checked: false },
+        { categoryName: 'Urgent', id: 2, checked: false },
+        { categoryName: 'working', id: 3, checked: false },
+        { categoryName: 'home', id: 4, checked: false }
     ];
      const onCategoryClickhandler = (catObj) => {
         
@@ -37,7 +37,7 @@ export const CategoryList = ({ onParentSelectCategory }) => {
                 data={listdata}
                 renderItem={({ item }) =>
                     <TouchableOpacity onPress={(event) => onCategoryClickhandler({...item})}>
-                        <Text style={getItemClass(item)} >{item.key}</Text>
+                        <Text style={getItemClass(item)} >{item.categoryName}</Text>
                     </TouchableOpacity>
                 }
             />

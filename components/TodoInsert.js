@@ -4,13 +4,20 @@ import { Button, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { CustomStyles } from "./CustomStyles";
 import React, { useState } from "react";
 import { CategoryList } from "./CategoryList";
- 
+
+
+
 export const TodoInsert = ({ onAddTodo, onParentSelectCategory }) => {
+
+     
     const [newTodoItem, setNewTodoItem] = useState('');
+ 
+
     const todoInputHandler = newTodo => 
     {
         setNewTodoItem(newTodo);
     };
+
     const addButtonTodo = () =>
     {
         if(newTodoItem.length>0)
@@ -22,6 +29,7 @@ export const TodoInsert = ({ onAddTodo, onParentSelectCategory }) => {
             alert("enter msg")
         }
     }
+ 
     return (
         <View style={{flexDirection:'column'}}>
             <View style={CustomStyles.inputContainer} >
@@ -38,7 +46,10 @@ export const TodoInsert = ({ onAddTodo, onParentSelectCategory }) => {
                 <TouchableOpacity  style={CustomStyles.appButtonContainer}  onPress={addButtonTodo}>
                     <Text style={CustomStyles.appButtonText}> Add</Text>
                 </TouchableOpacity>
+            
+            
             </View>
+
             <CategoryList onParentSelectCategory = {onParentSelectCategory}  />
         </View>
     );

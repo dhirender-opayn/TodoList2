@@ -2,12 +2,11 @@
 
 import { Image, Text, TouchableOpacity, View } from "react-native";
 import { CustomStyles } from "./CustomStyles";
-import React, { useState } from "react";
+import React from "react";
 
 export const TodoListitem = ({ textValue, id, categoryObj, checked, onRemove, onToggle }) => {
-    
-    
-
+     
+    console.log(categoryObj)
     return (
         <View style={CustomStyles.container2}>
  
@@ -26,7 +25,7 @@ export const TodoListitem = ({ textValue, id, categoryObj, checked, onRemove, on
             </TouchableOpacity>
 
             <Text style={[CustomStyles.text, checked ? CustomStyles.strikeText : CustomStyles.unstrikeText]}>{textValue}</Text>
-            <Text>{ categoryObj.key}</Text>
+            <Text>{ categoryObj.categoryName}</Text>
             <TouchableOpacity style={CustomStyles.buttonContainer} onPress={onRemove(id)}>
 
                 <Image source={require('./remove.png')} style={CustomStyles.cancelButtonContainer} />
